@@ -1,0 +1,11 @@
+[Defines]
+  DEC_SPECIFICATION                   = 0x00010005
+  PACKAGE_NAME                        = rosemary
+  PACKAGE_GUID                        = 5e4b9710-f7e1-449e-a01b-56a01b10ca42
+  PACKAGE_VERSION                     = 0.1
+
+[Includes.common]
+  Include                               # Root include for the package
+
+[Guids.common]
+  gWSPTokenSpaceGuid                  = { 5e4b9710f7, e1449e, a01b56, { 5e4b, 9710, f7e1, 449e, a01b, 56a0, 1b10, ca42 } }
