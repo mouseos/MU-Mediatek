@@ -59,14 +59,14 @@
   gMediatekPkgTokenSpaceGuid.PcdSmbiosBoardModel|"RedmiNote10S"
 
   # Simple FrameBuffer
-  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1092
+  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1089
   gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2400
   gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
 
 [PcdsDynamicDefault.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1092
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1089
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1092
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1089
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2400
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
