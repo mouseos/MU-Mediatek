@@ -37,7 +37,7 @@ class CommonPlatform():
     Scopes = ('rosemary', 'gcc_aarch64_linux', 'edk2-build')
     WorkspaceRoot = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     PackagesPath = (
-        "Platforms/Nokia",
+        "Platforms/Xiaomi",
         "Common/Mu",
         "Common/Mu_Tiano_Plus",
         "Common/Mu_OEM_Sample",
