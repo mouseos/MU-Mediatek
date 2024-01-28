@@ -1,21 +1,19 @@
 #!/bin/bash
 
-cat ./BootShim/AARCH64/BootShim.bin "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd" > "./ImageResources/bootpayload.bin"||exit 1
+# Build an Android kernel that is actually UEFI disguised as the Kernel
+cat ./BootShim/BootShim.bin "./Build/rosemaryPkg/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd" > "./Build/rosemaryPkg/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim"||exit 1
+gzip -c < "./Build/rosemaryPkg/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim" > "./Build/rosemaryPkg/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim.gz"||exit 1
+cat "./Build/rosemaryPkg/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim.gz" ./ImageResources/DTBs/rosemary.dtb > ./ImageResources/bootpayload.bin||exit 1
 
-gzip -f ./ImageResources/bootpayload.bin||_error "\nFailed to compress payload!\n"
-
+# Create bootable Android boot.img
 python3 ./ImageResources/mkbootimg.py \
-  --tags_offset 0x07808000 \
-  --second_offset 0xbff88000 \
-  --ramdisk_offset 0x11a88000 \
-  --pagesize 2048 \
-  --kernel_offset 0x00008000 \
-  --header_version 2  \
-  --dtb_offset 0x07808000 \
-  --cmdline "bootopt=64S3,32N2,64N2" \
-  --base 0x40078000 \
-  --ramdisk "./ImageResources/ramdisk" \
-  --dtb "./ImageResources/DTBs/rosemary.dtb" \
-  --kernel "./ImageResources/bootpayload.bin.gz" \
-  -o "Mu-rosemary.img" \
+  --kernel ./ImageResources/bootpayload.bin \
+  --ramdisk ./ImageResources/ramdisk \
+  --kernel_offset 0x00000000 \
+  --ramdisk_offset 0x00000000 \
+  --tags_offset 0x00000000 \
+  --os_version 13.0.0 \
+  --os_patch_level "$(date '+%Y-%m')" \
+  --header_version 1 \
+  -o Mu-rosemary.img \
   ||_error "\nFailed to create Android Boot Image!\n"
