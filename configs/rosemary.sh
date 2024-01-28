@@ -17,5 +17,5 @@ python3 ./ImageResources/mkbootimg.py \
   --ramdisk "./ImageResources/ramdisk" \
   --dtb "./ImageResources/DTBs/rosemary.dtb" \
   --kernel "./ImageResources/bootpayload.bin.gz" \
-  -o "Mu-WSP.img" \
+  -o "Mu-rosemary.img" \
   ||_error "\nFailed to create Android Boot Image!\n"
