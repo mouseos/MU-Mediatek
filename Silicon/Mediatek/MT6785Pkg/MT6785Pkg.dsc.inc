@@ -30,7 +30,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00006765
   gEmbeddedTokenSpaceGuid.PcdInterruptBaseAddress|0x0c400000
 
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Mediatek (TM) MT6785 @ 2.00 GHz"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Mediatek (TM) Helio G95/G90 @ 2.00 GHz"
   gMediatekPkgTokenSpaceGuid.PcdSmbiosProcessorRetailModel|"MT6785"
 
   gArmPlatformTokenSpaceGuid.PcdCoreCount|4
