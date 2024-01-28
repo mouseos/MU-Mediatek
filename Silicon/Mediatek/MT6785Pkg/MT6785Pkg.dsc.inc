@@ -27,10 +27,10 @@
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x0c100000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0c400000
 
-  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00006765
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00006785
   gEmbeddedTokenSpaceGuid.PcdInterruptBaseAddress|0x0c400000
 
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Mediatek (TM) Helio G95/G90 @ 2.00 GHz"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Mediatek (TM) Helio G95 @ 2.00 GHz"
   gMediatekPkgTokenSpaceGuid.PcdSmbiosProcessorRetailModel|"MT6785"
 
   gArmPlatformTokenSpaceGuid.PcdCoreCount|4
