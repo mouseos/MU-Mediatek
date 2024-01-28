@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build an Android kernel that is actually UEFI disguised as the Kernel
-cat ./BootShim/BootShim.bin "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd" > "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim"||exit 1
+cat ./BootShim/AARCH64/BootShim.bin "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd" > "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim"||exit 1
 gzip -c < "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim" > "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim.gz"||exit 1
 cat "./Build/rosemaryPkg-AARCH64/${_TARGET_BUILD_MODE}_CLANG38/FV/ROSEMARY_UEFI.fd-bootshim.gz" ./ImageResources/DTBs/rosemary.dtb > ./ImageResources/bootpayload.bin||exit 1
 
