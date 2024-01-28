@@ -64,9 +64,9 @@
   gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
 
 [PcdsDynamicDefault.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1096
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1096
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2400
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
