@@ -15,18 +15,18 @@
 #
 ################################################################################
 [Defines]
-  PLATFORM_NAME                  = WSP
+  PLATFORM_NAME                  = gta7lite
   PLATFORM_GUID                  = f54e021f-3f08-4971-9860-56892e7e78cb
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/WSPPkg-$(ARCH)
+  OUTPUT_DIRECTORY               = Build/gta7litePkg-$(ARCH)
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
-  FLASH_DEFINITION               = WSPPkg/WSP.fdf
+  FLASH_DEFINITION               = gta7litePkg/gta7lite.fdf
 
 [LibraryClasses.common]
-  PlatformMemoryMapLib|WSPPkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
+  PlatformMemoryMapLib|gta7litePkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
 
 [PcdsFixedAtBuild.common]
   # Platform-specific
@@ -35,11 +35,13 @@
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x80000000         # 2GB Size
 !elseif $(RAM_SIZE) == 3
   gArmTokenSpaceGuid.PcdSystemMemorySize|0xC0000000         # 3GB Size
+!elseif $(RAM_SIZE) == 4
+  gArmTokenSpaceGuid.PcdSystemMemorySize|0x100000000        # 4GB Size
 !else
-!error "Invaild RAM Size! Use 2 or 3."
+!error "Invaild RAM Size! Use 2, 3 or 4."
 !endif
 
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"halal-beef"   # Device Maintainer
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"team-orangeBlue"   # Device Maintainer
 
   gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x40C40000
 
@@ -47,25 +49,25 @@
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
 
   # SmBios
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"HMD Global Oy"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Nokia 2.2"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"TA-1188"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Nokia_2.2_TA-1188"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Nokia 2.2"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"Samsung Electronics Co., Ltd."
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy Tab A7 Lite"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"SM-T220"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_Tab_A7_Lite_SM-T220"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy Tab A7 Lite"
 
   # Simple FrameBuffer
-  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|736
-  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1520
+  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|800
+  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1340
   gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
 
 [PcdsDynamicDefault.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|736
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1520
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|736
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1520
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|90
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|80
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|90
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|80
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|800
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1340
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|800
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1340
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|100
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|70
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|100
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|70
 
 !include MT6765Pkg/MT6765Pkg.dsc.inc

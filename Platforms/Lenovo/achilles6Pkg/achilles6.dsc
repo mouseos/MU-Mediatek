@@ -15,54 +15,54 @@
 #
 ################################################################################
 [Defines]
-  PLATFORM_NAME                  = WSP
+  PLATFORM_NAME                  = achilles6
   PLATFORM_GUID                  = f54e021f-3f08-4971-9860-56892e7e78cb
   PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010005
-  OUTPUT_DIRECTORY               = Build/WSPPkg-$(ARCH)
+  OUTPUT_DIRECTORY               = Build/achilles6Pkg-$(ARCH)
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
-  FLASH_DEFINITION               = WSPPkg/WSP.fdf
+  FLASH_DEFINITION               = achilles6Pkg/achilles6.fdf
 
 [LibraryClasses.common]
-  PlatformMemoryMapLib|WSPPkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
+  PlatformMemoryMapLib|achilles6Pkg/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
 
 [PcdsFixedAtBuild.common]
   # Platform-specific
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000         # Starting address
 !if $(RAM_SIZE) == 2
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x80000000         # 2GB Size
-!elseif $(RAM_SIZE) == 3
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0xC0000000         # 3GB Size
+!elseif $(RAM_SIZE) == 4
+  gArmTokenSpaceGuid.PcdSystemMemorySize|0x100000000         # 4GB Size
 !else
-!error "Invaild RAM Size! Use 2 or 3."
+!error "Invaild RAM Size! Use 2 or 4."
 !endif
 
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"halal-beef"   # Device Maintainer
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"UsrBinLuna"   # Device Maintainer
 
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x40C40000
+  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x42080000
 
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x40C00000
+  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x42030000
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000      # 256K stack
 
   # SmBios
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"HMD Global Oy"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Nokia 2.2"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"TA-1188"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Nokia_2.2_TA-1188"
-  gMediatekPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Nokia 2.2"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"Lenovo"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Tab M10 FHD Plus 2nd Gen"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"TB-X606"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Tab_M10_FHD_TB-x606"
+  gMediatekPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Tab M10 FHD Plus 2nd Gen"
 
   # Simple FrameBuffer
-  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|736
-  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1520
+  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1216
+  gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1920
   gMediatekPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
 
 [PcdsDynamicDefault.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|736
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1520
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|736
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1520
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1216
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1920
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1216
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1920
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|90
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|80
   gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|90
